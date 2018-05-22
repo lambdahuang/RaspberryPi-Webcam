@@ -1,0 +1,14 @@
+click==6.7
+Flask==1.0.2
+Flask-Sijax==0.4.1
+future==0.16.0
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+numpy==1.14.3
+opencv-python==3.4.1.15
+Pillow==5.1.0
+pytz==2018.4
+Sijax==0.3.2
+six==1.11.0
+Werkzeug==0.14.1

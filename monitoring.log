@@ -1,0 +1,68 @@
+2018-05-21 23:06:37,472        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:07:26,009        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:07:35,651        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:08:28,332        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:10:13,766        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:11:13,956        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:11:36,375        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:12:49,247        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:13:01,480        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:18:54,078        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:18:54,357        INFO       Shutdown
+2018-05-21 23:18:59,788        WARNING    Failed to listen on port.[Errno 53] Software caused connection abort
+2018-05-21 23:18:59,789        INFO       Shutdown
+2018-05-21 23:18:59,789        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:20:00,705        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:20:00,966        INFO       Shutdown
+2018-05-21 23:20:13,227        WARNING    Failed to listen on port.[Errno 53] Software caused connection abort
+2018-05-21 23:20:13,227        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:20:13,227        INFO       Shutdown
+2018-05-21 23:20:13,227        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:20:14,460        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:20:14,731        INFO       Shutdown
+2018-05-21 23:20:16,476        WARNING    Failed to listen on port.[Errno 53] Software caused connection abort
+2018-05-21 23:20:16,476        INFO       Shutdown
+2018-05-21 23:20:16,476        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:20:16,477        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:20:35,446        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:20:35,715        INFO       Shutdown
+2018-05-21 23:20:38,175        WARNING    Failed to listen on port.[Errno 53] Software caused connection abort
+2018-05-21 23:20:38,175        INFO       Shutdown
+2018-05-21 23:20:38,175        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:20:38,176        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:20:38,176        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:20:56,056        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:20:56,336        INFO       Shutdown
+2018-05-21 23:22:21,206        WARNING    Failed to listen on port.[Errno 53] Software caused connection abort
+2018-05-21 23:22:21,207        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:21,207        INFO       Shutdown
+2018-05-21 23:22:21,207        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:21,207        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:22,547        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:22:22,810        INFO       Shutdown
+2018-05-21 23:22:25,795        WARNING    Failed to listen on port.[Errno 53] Software caused connection abort
+2018-05-21 23:22:25,796        INFO       Shutdown
+2018-05-21 23:22:25,796        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:25,796        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:25,797        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:25,797        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:25,797        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:25,797        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:25,797        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:25,797        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:25,797        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:25,798        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:22:37,761        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:22:38,042        INFO       Shutdown
+2018-05-21 23:23:05,094        WARNING    Failed to listen on port.[Errno 53] Software caused connection abort
+2018-05-21 23:23:05,095        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:23:05,095        INFO       Shutdown
+2018-05-21 23:23:05,095        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:23:05,095        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:23:05,096        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:23:05,096        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
+2018-05-21 23:23:06,250        INFO       Port is open, server is waiting for the remote steam.
+2018-05-21 23:23:06,515        INFO       Shutdown
+2018-05-21 23:23:22,868        WARNING    Failed to listen on port.[Errno 53] Software caused connection abort
+2018-05-21 23:23:22,868        INFO       Shutdown
+2018-05-21 23:23:22,868        WARNING    Failed to listen on port.[Errno 9] Bad file descriptor
