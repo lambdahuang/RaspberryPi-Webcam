@@ -117,4 +117,4 @@ if __name__ == '__main__':
     thread_hdl = threading.Thread(target=get_stream_from_remote, args=(server_socket,))
     thread_hdl.start()
     # thread.start_new_thread(get_stream_from_remote, (server_socket,))
-    app.run(host='0.0.0.0', port=80, threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=80, threaded=True)

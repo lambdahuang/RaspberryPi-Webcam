@@ -29,3 +29,6 @@ Temporary Items
 env
 .idea/*
 __pycache__/*
+*.log
+storage
+storage/*
