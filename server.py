@@ -39,6 +39,7 @@ def get_stream_from_remote(server_socket):
                 storage_directory,
                 30,
                 logger)
+            camera_stream.start()
             output_manager.append(camera_stream)
         except Exception as e:
             logger.warn('Failed to listen on port.' + str(e))

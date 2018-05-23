@@ -11,7 +11,7 @@ import threading
 import sys
 
 
-class CameraStream:
+class CameraStream(threading.Thread):
     # initialize some statistical variables
     _bandwidth_calc_time = 0
     _bandwidth_calc_count = 0
@@ -35,6 +35,7 @@ class CameraStream:
 
     def __init__(self, connection, storage_directory, shotcut_interval, logger):
         try:
+            threading.Thread.__init__(self)
             self._connection = connection
             self._data_pipeline = connection.makefile('rb')
             self._camera_name = str(struct.unpack(
@@ -47,37 +48,16 @@ class CameraStream:
             self._shotcut_interval = shotcut_interval
             self.status = 'Active'
             self._logger = logger
-            self._main_thread = threading.Thread(target=self._stream_receiver)
-            self._main_thread.start()
         except Exception as e:
-            logger.warn('Failed to listen on port.' + str(e))
+            self._logger.warn('Failed to listen on port.' + str(e))
             exc_type, exc_obj, exc_tb = sys.exc_info()
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             print(exc_type, fname, exc_tb.tb_lineno)
 
-        logger.info('The stream from {} is initialized.'.format(self._camera_name))
+        self._logger.info('The stream from {} is initialized.'.format(self._camera_name))
 
-    def _put_text_on_image(self, target_text):
-        # turn the image into opencv compatible format
-        cv2.putText(
-            self._cv_image,
-            target_text,
-            (10, len(self._cv_image) - 20),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.3,
-            (255, 255, 255),
-            1
-        )
-
-    def _take_shotcut(self):
-        if time.time() - self._last_shotcut_time >= self._shotcut_interval:
-            label = datetime.utcnow().replace(tzinfo=pytz.utc).astimezone(pytz.timezone('US/Eastern')).strftime('%y_%m_%d_%H_%M_%S')
-            output_path = self._shotcut_directory + '/' + label + '.jpg'
-            cv2.imwrite(output_path, self._cv_image)
-            self._logger.info('Output image to file: {}'.format(output_path))
-            self._last_shotcut_time = time.time()
-
-    def _stream_receiver(self):
+    def run(self):
+        self._logger.info('Thread is running.')
         try:
             while True:
                 # Read the length of the image as a 32-bit unsigned int. If the
@@ -125,6 +105,26 @@ class CameraStream:
         finally:
             self._data_pipeline.close()
             self.status = 'Inactive'
+
+    def _put_text_on_image(self, target_text):
+        # turn the image into opencv compatible format
+        cv2.putText(
+            self._cv_image,
+            target_text,
+            (10, len(self._cv_image) - 20),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.3,
+            (255, 255, 255),
+            1
+        )
+
+    def _take_shotcut(self):
+        if time.time() - self._last_shotcut_time >= self._shotcut_interval:
+            label = datetime.utcnow().replace(tzinfo=pytz.utc).astimezone(pytz.timezone('US/Eastern')).strftime('%y_%m_%d_%H_%M_%S')
+            output_path = self._shotcut_directory + '/' + label + '.jpg'
+            cv2.imwrite(output_path, self._cv_image)
+            self._logger.info('Output image to file: {}'.format(output_path))
+            self._last_shotcut_time = time.time()
 
     def get_status(self):
         if time.time() - self._last_update > 60:
