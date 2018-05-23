@@ -1,7 +1,10 @@
 language: python
-os: osx
+python:
+    - 3.6
+os: linux
+sudo: enable
 before_install:
-    - brew update
-    - brew install python2
-    - pip install -r requirements.txt
-
+    - echo 'haha'
+script:
+    - flake8 server.py
+    - flake8 stream.py

@@ -33,15 +33,27 @@ class CameraStream(threading.Thread):
 
     status = 'Inactive'
 
-    def __init__(self, connection, storage_directory, shotcut_interval, logger):
+    def __init__(
+        self,
+        connection,
+        storage_directory,
+        shotcut_interval,
+        logger
+    ):
         try:
             threading.Thread.__init__(self)
             self._connection = connection
             self._data_pipeline = connection.makefile('rb')
             self._camera_name = str(struct.unpack(
                 '<50s',
-                self._data_pipeline.read(struct.calcsize('<50s')))[0], 'utf-8').replace('\x00', '')
-            self._shotcut_directory = os.path.join(storage_directory, self._camera_name)
+                self._data_pipeline.read(
+                    struct.calcsize('<50s')
+                ))[0], 'utf-8').replace('\x00', '')
+
+            self._shotcut_directory = os.path.join(
+                storage_directory,
+                self._camera_name)
+
             if not os.path.isdir(self._shotcut_directory):
                 os.makedirs(self._shotcut_directory)
             self._last_update = time.time()
@@ -54,7 +66,8 @@ class CameraStream(threading.Thread):
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             print(exc_type, fname, exc_tb.tb_lineno)
 
-        self._logger.info('The stream from {} is initialized.'.format(self._camera_name))
+        self._logger.info(
+            'The stream from {} is initialized.'.format(self._camera_name))
 
     def run(self):
         self._logger.info('Thread is running.')
@@ -69,7 +82,9 @@ class CameraStream(threading.Thread):
                 if not image_len:
                     break
                 else:
-                    self._bandwidth_calc_count = self._bandwidth_calc_count + image_len
+                    self._bandwidth_calc_count = self.\
+                        _bandwidth_calc_count + image_len
+
                     self._frame_count = self._frame_count + 1
 
                 # Construct a stream to hold the image data and read the image
@@ -85,8 +100,10 @@ class CameraStream(threading.Thread):
 
                 # calculate bandwidth
                 if (time.time() - self._bandwidth_calc_time) >= 2:
-                    bandwidth = self._bandwidth_calc_count / float(time.time() - self._bandwidth_calc_time) / 1000  # KB/S
-                    frame_per_second = self._frame_count / float(time.time() - self._bandwidth_calc_time)
+                    bandwidth = self._bandwidth_calc_count / float(
+                        time.time() - self._bandwidth_calc_time) / 1000  # KB/S
+                    frame_per_second = self._frame_count / float(
+                            time.time() - self._bandwidth_calc_time)
 
                     self._bandwidth_calc_time = time.time()
                     self._bandwidth_calc_count = 0
@@ -95,10 +112,18 @@ class CameraStream(threading.Thread):
                 self._put_text_on_image("{:.2f}KPS    {:.2f}FPS    {}".format(
                     bandwidth,
                     frame_per_second,
-                    datetime.utcnow().replace(tzinfo=pytz.utc).astimezone(pytz.timezone('US/Eastern'))
+                    datetime.utcnow().replace(
+                        tzinfo=pytz.utc
+                    ).astimezone(
+                        pytz.timezone('US/Eastern')
+                    )
                 ))
 
-                ret, self.image_output = cv2.imencode('.jpeg', self._cv_image, [cv2.IMWRITE_JPEG_QUALITY, 80])
+                ret, self.image_output = cv2.imencode(
+                        '.jpeg',
+                        self._cv_image,
+                        [cv2.IMWRITE_JPEG_QUALITY, 80])
+
                 self._last_update = time.time()
                 self._take_shotcut()
 
@@ -120,7 +145,11 @@ class CameraStream(threading.Thread):
 
     def _take_shotcut(self):
         if time.time() - self._last_shotcut_time >= self._shotcut_interval:
-            label = datetime.utcnow().replace(tzinfo=pytz.utc).astimezone(pytz.timezone('US/Eastern')).strftime('%y_%m_%d_%H_%M_%S')
+            label = datetime.utcnow().replace(
+                tzinfo=pytz.utc
+            ).astimezone(
+                pytz.timezone('US/Eastern')
+            ).strftime('%y_%m_%d_%H_%M_%S')
             output_path = self._shotcut_directory + '/' + label + '.jpg'
             cv2.imwrite(output_path, self._cv_image)
             self._logger.info('Output image to file: {}'.format(output_path))
@@ -134,15 +163,3 @@ class CameraStream(threading.Thread):
 
     def get_camera_name(self):
         return self._camera_name
-
-
-
-
-
-
-
-
-
-
-
-

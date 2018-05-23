@@ -33,7 +33,6 @@ def get_stream_from_remote(server_socket):
             # Accept a single connection and make a file-like object out of it
             connection, addr = server_socket.accept()
             logger.info('New stream comes: {}:{}'.format(addr[0], addr[1]))
-            # thread.start_new_thread(stream_receiver, (connection.makefile('rb'),))
             camera_stream = CameraStream(
                 connection,
                 storage_directory,
@@ -60,7 +59,8 @@ def index():
             <div class="row">
                 <div class="col-sm-12"></div>
                 <h3>{cam_name}</h3>
-                <img class="img-rounded img-responsive" style = "padding-left: 80px; padding-right: 80px;" src="{video_index}">
+                <img class="img-rounded img-responsive" style =\
+            "padding-left: 80px; padding-right: 80px;" src="{video_index}">
             </div>
             """.format(
                 cam_name=camera_stream.get_camera_name(),
@@ -115,7 +115,9 @@ if __name__ == '__main__':
     server_socket.listen(0)
 
     global thread_hdl
-    thread_hdl = threading.Thread(target=get_stream_from_remote, args=(server_socket,))
+    thread_hdl = threading.Thread(
+            target=get_stream_from_remote,
+            args=(server_socket,))
     thread_hdl.start()
     # thread.start_new_thread(get_stream_from_remote, (server_socket,))
     app.run(host='0.0.0.0', port=80, threaded=True)
