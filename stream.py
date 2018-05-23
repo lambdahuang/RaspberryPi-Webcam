@@ -31,6 +31,7 @@ class CameraStream(threading.Thread):
     _connection = None
     _last_update = 0
 
+    _logger = None
     status = 'Inactive'
 
     def __init__(
@@ -48,7 +49,7 @@ class CameraStream(threading.Thread):
                 '<50s',
                 self._data_pipeline.read(
                     struct.calcsize('<50s')
-                ))[0], 'utf-8').replace('\x00', '')
+                ))[0].decode('utf-8')).replace('\x00', '')
 
             self._shotcut_directory = os.path.join(
                 storage_directory,
@@ -61,12 +62,12 @@ class CameraStream(threading.Thread):
             self.status = 'Active'
             self._logger = logger
         except Exception as e:
-            self._logger.warn('Failed to listen on port.' + str(e))
+            logger.warn('Failed to listen on port.' + str(e))
             exc_type, exc_obj, exc_tb = sys.exc_info()
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             print(exc_type, fname, exc_tb.tb_lineno)
 
-        self._logger.info(
+        logger.info(
             'The stream from {} is initialized.'.format(self._camera_name))
 
     def run(self):
