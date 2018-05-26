@@ -65,6 +65,6 @@ def shutdown_hook():
 if __name__ == '__main__':
     atexit.register(shutdown_hook)
     global stream_server
-    stream_server = StreamServer(logger)
+    stream_server = StreamServer(logger, './storage/')
     stream_server.start()
     app.run(host='0.0.0.0', port=80, threaded=True)
