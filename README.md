@@ -54,3 +54,10 @@ sudo nohup python3 server.py &
 
 Solution: This is probably caused by missing necessary image library. To install python image tool, execute following commands: `sudo apt-get install python-imaging libjpeg-dev zlib1g-dev` or `yum innstall python-imaging libjpeg-dev zlib1g-dev`.
 
+# Auto-run Camera Script When Booting
+
+There are many ways outside to autorun a script when booting the Pi.
+I'm using the `/etc/rc.local` to realize the autorun,
+by simply placing this `/home/pi/camera_side/env/bin/python /home/pi/camera_side/camera_client.py &`
+at the end of the file.
+
