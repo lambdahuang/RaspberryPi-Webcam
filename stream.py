@@ -96,7 +96,12 @@ class CameraStream(threading.Thread):
                 # Rewind the stream, open it as an image with PIL and do some
                 # processing on it
                 image_stream.seek(0)
+                # for unknown reason, the original image red and blue
+                # channel swapped.
                 self._image = Image.open(image_stream)
+                r, g, b = self._image.split()
+
+                self._image = Image.merge('RGB', (b, g, r))
                 self._cv_image = np.array(self._image)
 
                 # calculate bandwidth
