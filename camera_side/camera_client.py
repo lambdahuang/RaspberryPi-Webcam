@@ -5,11 +5,12 @@ import time
 import picamera
 from PIL import Image
 import configparser
+import argparse
 
 
 def run_camera(config_file):
     Config = configparser.ConfigParser()
-    Config.read("./camera_setting.ini")
+    Config.read(config_file)
 
     camera_name = Config.get('camera', 'name')
     resolution_width = int(Config.get('camera', 'width'))

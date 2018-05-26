@@ -48,6 +48,17 @@ source env/bin/activate
 sudo nohup python3 server.py &
 ```
 
+# Camera-side Installation
+
+The installation is pretty same as the server-side.
+
+```
+# Install the camera-side
+cd camera_side/
+chmod +x install.sh
+./install.sh
+```
+
 # Issues with Installation
 
 1. Clien-side installation failure.
@@ -58,6 +69,6 @@ Solution: This is probably caused by missing necessary image library. To install
 
 There are many ways outside to autorun a script when booting the Pi.
 I'm using the `/etc/rc.local` to realize the autorun,
-by simply placing this `/home/pi/camera_side/env/bin/python /home/pi/camera_side/camera_client.py &`
+by simply placing this `/home/pi/camera_side/env/bin/python3 /home/pi/camera_side/camera_client.py /home/pi/camera_side/camera_setting.ini &`
 at the end of the file.
 
