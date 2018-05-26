@@ -28,9 +28,6 @@ Run following script to download and install the environment.
 ```
 git clone https://github.com/lambdahuang/RaspberryPi-Webcam.git
 cd RaspberryPi-Webcam
-echo 'Creating virtual environment...'
-python3 -m venv env
-source env/bin/activate
 chmod +x install.sh
 ./install.sh
 ```
@@ -53,7 +50,7 @@ sudo nohup python3 server.py &
 
 # Issues with Installation
 
-1. PIL installation failure.
+1. Clien-side installation failure.
 
-Solution: Install python image tool using: `sudo apt-get install python-imaging libjpeg-dev zlib1g-dev` or `yum innstall python-imaging libjpeg-dev zlib1g-dev`.
+Solution: This is probably caused by missing necessary image library. To install python image tool, execute following commands: `sudo apt-get install python-imaging libjpeg-dev zlib1g-dev` or `yum innstall python-imaging libjpeg-dev zlib1g-dev`.
 
