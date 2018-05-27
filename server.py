@@ -2,6 +2,7 @@ from flask import Flask, render_template, Response, url_for
 import logging
 import atexit
 from stream_manager import StreamServer
+import time
 
 app = Flask(__name__)
 
@@ -43,6 +44,7 @@ def gen(video_index):
     global stream_server
     while True:
         jpeg = stream_server.output_manager[int(video_index)].image_output
+        time.sleep(0.1)  # to avoid overrun the visitor.
         yield (
                 b'--frame\r\n'
                 b'Content-Type: image/jpeg\r\n\r\n' +
