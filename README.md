@@ -50,8 +50,9 @@ sudo nohup python3 server.py &
 
 # Camera-side Installation
 
-The installation is pretty same as the server-side.
-
+The installation is pretty similar to the server-side.
+On the camera side, you only need the directory of *camera_side*. 
+Copy the camera_side to a location on camera-side Pi, and execute following commands:
 ```
 # Install the camera-side
 cd camera_side/
