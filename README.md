@@ -18,7 +18,7 @@ The server side is written by python flask. You can put it anywhere in any opera
 1. `Live` video stream.
 2. Purely `python-based` applet.
 3. Support `image playback`, server periodically dump images to files.
-4. `Web-based` server, DOES NOT require any client.
+4. `Web-based` server, DOES NOT require any client software besides a browser.
 5. Support `global deployment`, as long as you have a public IP to run the server!
 
 
